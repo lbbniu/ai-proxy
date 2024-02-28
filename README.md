@@ -50,3 +50,26 @@ docker-compose up -d
 # 查看部署状态
 docker-compose ps
 ```
+
+## 配置
+系统本身开箱即用。
+
+你可以通过设置环境变量或者命令行参数进行配置。
+
+等到系统启动后，使用 `lbbniu` 用户登录系统并做进一步的配置。
+
+**Note**：如果你不知道某个配置项的含义，可以临时删掉值以看到进一步的提示文字。
+
+## 相关项目
+* [FastGPT](https://github.com/labring/FastGPT): 基于 LLM 大语言模型的知识库问答系统
+* [ChatGPT Next Web](https://github.com/Yidadaa/ChatGPT-Next-Web):  一键拥有你自己的跨平台 ChatGPT 应用
+* [One API]([https://github.com/Yidadaa/ChatGPT-Next-Web](https://github.com/songquanpeng/one-api)):  通过标准的 OpenAI API 格式访问所有的大模型，开箱即用
+
+
+## 注意
+
+本项目使用 GPL 协议进行开源，**在此基础上**，必须在页面底部保留署名以及指向本项目的链接。如果不想保留署名，必须首先获得授权。
+
+同样适用于基于本项目的二开项目。
+
+依据 GPL 协议，使用者需自行承担使用本项目的风险与责任，本开源项目开发者与此无关。
