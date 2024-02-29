@@ -63,7 +63,7 @@ docker-compose ps
 ## 相关项目
 * [FastGPT](https://github.com/labring/FastGPT): 基于 LLM 大语言模型的知识库问答系统
 * [ChatGPT Next Web](https://github.com/Yidadaa/ChatGPT-Next-Web):  一键拥有你自己的跨平台 ChatGPT 应用
-* [One API]([https://github.com/Yidadaa/ChatGPT-Next-Web](https://github.com/songquanpeng/one-api)):  通过标准的 OpenAI API 格式访问所有的大模型，开箱即用
+* [One API](https://github.com/songquanpeng/one-api):  通过标准的 OpenAI API 格式访问所有的大模型，开箱即用
 
 
 ## 注意
