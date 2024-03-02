@@ -22,8 +22,9 @@ func addRouter(g *gin.Engine) {
 	// 参考微软 和 OpenAi 接口路径规则
 	r := g.Group("/:serviceProvider/deployments/:deployment")
 	{
+		proxy := api.NewProxy()
 		r.POST("audio/transcriptions", api.ProxyNotImplemented)
-		r.POST("chat/completions", api.ProxyNotImplemented)
+		r.POST("chat/completions", proxy.Proxy)
 		r.POST("embeddings", api.ProxyNotImplemented)
 		r.POST("images/generations", api.ProxyNotImplemented)
 	}
