@@ -3,9 +3,12 @@ package api
 import (
 	"net/http"
 	"net/http/httputil"
-	"net/url"
 
 	"github.com/gin-gonic/gin"
+
+	"github.com/lbbniu/ai-proxy/proxy/api"
+	"github.com/lbbniu/ai-proxy/proxy/model"
+	"github.com/lbbniu/ai-proxy/proxy/model/openai"
 )
 
 type Proxy struct {
@@ -18,7 +21,8 @@ func NewProxy() *Proxy {
 func (p *Proxy) Proxy(ctx *gin.Context) {
 	serviceProvider := ctx.Param("serviceProvider")
 	deployment := ctx.Param("deployment")
-	target, err := url.Parse("https://api.openai.com")
+	var m model.Model = openai.New()
+	target, err := m.Target(api.ProxyApiChatCompletions)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{
 			"serviceProvider": serviceProvider,
@@ -30,6 +34,10 @@ func (p *Proxy) Proxy(ctx *gin.Context) {
 	defaultDirector := reverseProxy.Director
 	reverseProxy.Director = func(req *http.Request) {
 		defaultDirector(req)
+		req.URL.Path, req.URL.RawPath = target.Path, target.RawPath
+		for key, value := range m.Header() {
+			req.Header[key] = value
+		}
 	}
 	reverseProxy.ModifyResponse = p.ModifyResponse
 	reverseProxy.ServeHTTP(ctx.Writer, ctx.Request)
